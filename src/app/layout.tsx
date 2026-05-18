@@ -1,9 +1,10 @@
 import "./globals.css";
-import Navbar from "@/components/Navbar";
+import Sidebar from "@/components/Sidebar";
 
 export const metadata = {
-  title: "PDF Automation Tool",
-  description: "Generate PDFs automatically",
+  title: "CertGen - Bulk Certificate Generation",
+  description: "Generate bulk certificates with ease",
+  viewport: "width=device-width, initial-scale=1, maximum-scale=1",
 };
 
 export default function RootLayout({
@@ -12,10 +13,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className="bg-gray-100">
-        <Navbar />
-        {children}
+    <html lang="en" className="bg-[var(--background)]">
+      <body className="bg-[var(--background)] text-[var(--foreground)]">
+        <div className="flex h-screen overflow-hidden">
+          <div className="hidden md:flex w-64 flex-shrink-0">
+            <Sidebar />
+          </div>
+          <main className="flex-1 overflow-auto w-full">
+            {children}
+          </main>
+        </div>
       </body>
     </html>
   );
